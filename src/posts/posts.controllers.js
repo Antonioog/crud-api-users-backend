@@ -1,10 +1,15 @@
 const Posts = require('../models/posts.model')
+const Users = require('../models/users.model')
 
 //Creamos las diferentes funciones de las diferentes acciones.
 
 //Funcion para obtener todos los posts...
 const findAllPosts = async () => {
-    const posts = await Posts.findAll()
+    const posts = await Posts.findAll({
+        include:{
+            model: Users
+        }
+    })
     return posts
 }
 
@@ -28,7 +33,7 @@ const createNewPost = async (postObj) => {
         title: postObj.title,
         content: postObj.content,
         category: postObj.category,
-        userName: postObj.userName
+        userId: postObj.userId
     })
     return newPost
 }

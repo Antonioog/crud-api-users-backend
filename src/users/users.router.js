@@ -3,11 +3,11 @@ const router = require('express').Router()
 
 const userServices = require('./users.services')
 
-router.route('/users')
+router.route('/')
     .get(userServices.getAllUsers)
     .post(userServices.postNewUser)
 
-router.route('/users/:id')
+router.route('/:id')
     .get(userServices.getUserById)
     .patch(userServices.patchUser)
     .delete(userServices.deleteUser)
